@@ -1,6 +1,6 @@
 'From Cuis 5.0 of 7 November 2016 [latest update: #3464] on 3 October 2018 at 9:15:48 am'!
-'Description Please enter a description for this package'!
-!provides: 'GeographicDatasets' 1 13!
+'Description '!
+!provides: 'GeographicDatasets' 1 14!
 !requires: 'ImageProcessing' 1 nil nil!
 !requires: 'WebClient' 1 16 nil!
 !requires: 'Cartography' 1 1 nil!

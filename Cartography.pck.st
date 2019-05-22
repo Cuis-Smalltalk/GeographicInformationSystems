@@ -1,6 +1,6 @@
 'From Cuis 5.0 of 7 November 2016 [latest update: #3421] on 17 August 2018 at 5:32:32 pm'!
-'Description Please enter a description for this package'!
-!provides: 'Cartography' 1 16!
+'Description '!
+!provides: 'Cartography' 1 17!
 !requires: 'Graphics-Files-Additional' 1 4 nil!
 !requires: 'Math 3D' 1 4 nil!
 SystemOrganization addCategory: #Cartography!

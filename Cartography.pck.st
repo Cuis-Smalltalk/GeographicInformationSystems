@@ -1,48 +1,48 @@
-'From Cuis 5.0 of 7 November 2016 [latest update: #3421] on 17 August 2018 at 5:32:32 pm'!
+'From Cuis 5.0 [latest update: #4594] on 10 May 2021 at 4:28:51 pm'!
 'Description '!
-!provides: 'Cartography' 1 17!
-!requires: 'Graphics-Files-Additional' 1 4 nil!
+!provides: 'Cartography' 1 18!
 !requires: 'Math 3D' 1 4 nil!
-SystemOrganization addCategory: #Cartography!
+!requires: 'Graphics-Files-Additional' 1 4 nil!
+SystemOrganization addCategory: 'Cartography'!
 
 
-!classDefinition: #GPSPosition category: #Cartography!
+!classDefinition: #GPSPosition category: 'Cartography'!
 Float64Array variableWordSubclass: #GPSPosition
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Cartography'!
-!classDefinition: 'GPSPosition class' category: #Cartography!
+!classDefinition: 'GPSPosition class' category: 'Cartography'!
 GPSPosition class
 	instanceVariableNames: ''!
 
-!classDefinition: #CartographicProjection category: #Cartography!
+!classDefinition: #CartographicProjection category: 'Cartography'!
 Object subclass: #CartographicProjection
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Cartography'!
-!classDefinition: 'CartographicProjection class' category: #Cartography!
+!classDefinition: 'CartographicProjection class' category: 'Cartography'!
 CartographicProjection class
 	instanceVariableNames: ''!
 
-!classDefinition: #MercatorProjection category: #Cartography!
+!classDefinition: #MercatorProjection category: 'Cartography'!
 CartographicProjection subclass: #MercatorProjection
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Cartography'!
-!classDefinition: 'MercatorProjection class' category: #Cartography!
+!classDefinition: 'MercatorProjection class' category: 'Cartography'!
 MercatorProjection class
 	instanceVariableNames: ''!
 
-!classDefinition: #WebmercatorProjection category: #Cartography!
+!classDefinition: #WebmercatorProjection category: 'Cartography'!
 CartographicProjection subclass: #WebmercatorProjection
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Cartography'!
-!classDefinition: 'WebmercatorProjection class' category: #Cartography!
+!classDefinition: 'WebmercatorProjection class' category: 'Cartography'!
 WebmercatorProjection class
 	instanceVariableNames: ''!
 
@@ -158,19 +158,19 @@ asECEF
 	z _ (b squared / a squared * n + h) * phi sin.
 	^ Float64Vector3 x: x y: y z: z! !
 
-!GPSPosition methodsFor: 'converting' stamp: 'jmv 9/8/2015 09:35'!
+!GPSPosition methodsFor: 'converting' stamp: 'jmv 5/10/2021 13:28:20'!
 asECEFSpherical
 	"como asECEF, pero todo esferico.
 	O sea, la latitud es geocentrica, no geodetica.
 	En general, NO USAR. Casi nunca tiene sentido!!"
 	
-	| magnitude latitude longitude parallelCircleRadious x y z |
+	| magnitude latitude longitude parallelCircleRadius x y z |
 	magnitude _ GPSPosition wgs84SemiMajorAxis + self height.
 	latitude _ self phi degreesToRadians.
 	longitude _ self lambda degreesToRadians.
-	parallelCircleRadious _ magnitude * latitude cos.
-	x _ parallelCircleRadious * longitude cos.
-	y _ parallelCircleRadious * longitude sin.
+	parallelCircleRadius _ magnitude * latitude cos.
+	x _ parallelCircleRadius * longitude cos.
+	y _ parallelCircleRadius * longitude sin.
 	z _ magnitude * latitude sin.
 	^ Float64Vector3 x: x y: y z: z! !
 
@@ -280,12 +280,12 @@ longitude: lambda latitude: phi altitude: h
 numElements
 	^3! !
 
-!GPSPosition class methodsFor: 'aux functions' stamp: 'jmv 3/2/2015 13:57'!
+!GPSPosition class methodsFor: 'aux functions' stamp: 'jmv 5/10/2021 13:28:26'!
 normalAtLatitude: phi
 	"Distance from the surface to the Z-axis along the ellipsoid normal
 	http://en.wikipedia.org/wiki/Geodetic_datum
-	GPSPosition earthRadiousAtLatitude: 90 6.39959362575849e6
-	GPSPosition earthRadiousAtLatitude: 0 6.378137e6
+	GPSPosition earthRadiusAtLatitude: 90 6.39959362575849e6
+	GPSPosition earthRadiusAtLatitude: 0 6.378137e6
 	" 
 	| a eSquared |
 	a _ self wgs84SemiMajorAxis.

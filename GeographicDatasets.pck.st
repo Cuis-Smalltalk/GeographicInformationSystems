@@ -1,250 +1,250 @@
-'From Cuis 5.0 of 7 November 2016 [latest update: #3464] on 3 October 2018 at 9:15:48 am'!
+'From Cuis 5.0 [latest update: #4607] on 20 May 2021 at 10:13:09 am'!
 'Description '!
-!provides: 'GeographicDatasets' 1 14!
+!provides: 'GeographicDatasets' 1 15!
 !requires: 'ImageProcessing' 1 nil nil!
-!requires: 'WebClient' 1 16 nil!
 !requires: 'Cartography' 1 1 nil!
-SystemOrganization addCategory: #'GeographicDatasets-Tests'!
-SystemOrganization addCategory: #GeographicDatasets!
+!requires: 'WebClient' 1 16 nil!
+SystemOrganization addCategory: 'GeographicDatasets-Tests'!
+SystemOrganization addCategory: 'GeographicDatasets'!
 
 
-!classDefinition: #EGM96Geoid5Test category: #'GeographicDatasets-Tests'!
+!classDefinition: #EGM96Geoid5Test category: 'GeographicDatasets-Tests'!
 TestCase subclass: #EGM96Geoid5Test
 	instanceVariableNames: 'instance'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'GeographicDatasets-Tests'!
-!classDefinition: 'EGM96Geoid5Test class' category: #'GeographicDatasets-Tests'!
+!classDefinition: 'EGM96Geoid5Test class' category: 'GeographicDatasets-Tests'!
 EGM96Geoid5Test class
 	instanceVariableNames: ''!
 
-!classDefinition: #ShuttleRadarTopographyMission3Test category: #'GeographicDatasets-Tests'!
+!classDefinition: #ShuttleRadarTopographyMission3Test category: 'GeographicDatasets-Tests'!
 TestCase subclass: #ShuttleRadarTopographyMission3Test
 	instanceVariableNames: 'instance'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'GeographicDatasets-Tests'!
-!classDefinition: 'ShuttleRadarTopographyMission3Test class' category: #'GeographicDatasets-Tests'!
+!classDefinition: 'ShuttleRadarTopographyMission3Test class' category: 'GeographicDatasets-Tests'!
 ShuttleRadarTopographyMission3Test class
 	instanceVariableNames: ''!
 
-!classDefinition: #TiledECEFSampledWorldTest category: #'GeographicDatasets-Tests'!
+!classDefinition: #TiledECEFSampledWorldTest category: 'GeographicDatasets-Tests'!
 TestCase subclass: #TiledECEFSampledWorldTest
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'GeographicDatasets-Tests'!
-!classDefinition: 'TiledECEFSampledWorldTest class' category: #'GeographicDatasets-Tests'!
+!classDefinition: 'TiledECEFSampledWorldTest class' category: 'GeographicDatasets-Tests'!
 TiledECEFSampledWorldTest class
 	instanceVariableNames: ''!
 
-!classDefinition: #TiledECEFVariableSampledDEMTest category: #'GeographicDatasets-Tests'!
+!classDefinition: #TiledECEFVariableSampledDEMTest category: 'GeographicDatasets-Tests'!
 TestCase subclass: #TiledECEFVariableSampledDEMTest
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'GeographicDatasets-Tests'!
-!classDefinition: 'TiledECEFVariableSampledDEMTest class' category: #'GeographicDatasets-Tests'!
+!classDefinition: 'TiledECEFVariableSampledDEMTest class' category: 'GeographicDatasets-Tests'!
 TiledECEFVariableSampledDEMTest class
 	instanceVariableNames: ''!
 
-!classDefinition: #TrueMarbleTest category: #'GeographicDatasets-Tests'!
+!classDefinition: #TrueMarbleTest category: 'GeographicDatasets-Tests'!
 TestCase subclass: #TrueMarbleTest
 	instanceVariableNames: 'instance'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'GeographicDatasets-Tests'!
-!classDefinition: 'TrueMarbleTest class' category: #'GeographicDatasets-Tests'!
+!classDefinition: 'TrueMarbleTest class' category: 'GeographicDatasets-Tests'!
 TrueMarbleTest class
 	instanceVariableNames: ''!
 
-!classDefinition: #MeridiansAndParallelsSampledWorld category: #GeographicDatasets!
+!classDefinition: #MeridiansAndParallelsSampledWorld category: 'GeographicDatasets'!
 Object subclass: #MeridiansAndParallelsSampledWorld
 	instanceVariableNames: 'nominalGSD'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'GeographicDatasets'!
-!classDefinition: 'MeridiansAndParallelsSampledWorld class' category: #GeographicDatasets!
+!classDefinition: 'MeridiansAndParallelsSampledWorld class' category: 'GeographicDatasets'!
 MeridiansAndParallelsSampledWorld class
 	instanceVariableNames: ''!
 
-!classDefinition: #SampledTile category: #GeographicDatasets!
+!classDefinition: #SampledTile category: 'GeographicDatasets'!
 Object subclass: #SampledTile
 	instanceVariableNames: 'samples'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'GeographicDatasets'!
-!classDefinition: 'SampledTile class' category: #GeographicDatasets!
+!classDefinition: 'SampledTile class' category: 'GeographicDatasets'!
 SampledTile class
 	instanceVariableNames: 'nullInstance'!
 
-!classDefinition: #ValidableTile category: #GeographicDatasets!
+!classDefinition: #ValidableTile category: 'GeographicDatasets'!
 SampledTile subclass: #ValidableTile
 	instanceVariableNames: 'needsValidation'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'GeographicDatasets'!
-!classDefinition: 'ValidableTile class' category: #GeographicDatasets!
+!classDefinition: 'ValidableTile class' category: 'GeographicDatasets'!
 ValidableTile class
 	instanceVariableNames: ''!
 
-!classDefinition: #TiledSampledWorld category: #GeographicDatasets!
+!classDefinition: #TiledSampledWorld category: 'GeographicDatasets'!
 Object subclass: #TiledSampledWorld
 	instanceVariableNames: 'name allTiles cachedTiles datasetPath'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'GeographicDatasets'!
-!classDefinition: 'TiledSampledWorld class' category: #GeographicDatasets!
+!classDefinition: 'TiledSampledWorld class' category: 'GeographicDatasets'!
 TiledSampledWorld class
 	instanceVariableNames: 'instance'!
 
-!classDefinition: #TiledECEFSampledWorld category: #GeographicDatasets!
+!classDefinition: #TiledECEFSampledWorld category: 'GeographicDatasets'!
 TiledSampledWorld subclass: #TiledECEFSampledWorld
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'GeographicDatasets'!
-!classDefinition: 'TiledECEFSampledWorld class' category: #GeographicDatasets!
+!classDefinition: 'TiledECEFSampledWorld class' category: 'GeographicDatasets'!
 TiledECEFSampledWorld class
 	instanceVariableNames: ''!
 
-!classDefinition: #TiledECEFUniformlySampledWorld category: #GeographicDatasets!
+!classDefinition: #TiledECEFUniformlySampledWorld category: 'GeographicDatasets'!
 TiledECEFSampledWorld subclass: #TiledECEFUniformlySampledWorld
 	instanceVariableNames: 'voxelSide samplesPerTileSide'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'GeographicDatasets'!
-!classDefinition: 'TiledECEFUniformlySampledWorld class' category: #GeographicDatasets!
+!classDefinition: 'TiledECEFUniformlySampledWorld class' category: 'GeographicDatasets'!
 TiledECEFUniformlySampledWorld class
 	instanceVariableNames: ''!
 
-!classDefinition: #TiledECEFNaturalEarth category: #GeographicDatasets!
+!classDefinition: #TiledECEFNaturalEarth category: 'GeographicDatasets'!
 TiledECEFUniformlySampledWorld subclass: #TiledECEFNaturalEarth
 	instanceVariableNames: 'sourceDataset'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'GeographicDatasets'!
-!classDefinition: 'TiledECEFNaturalEarth class' category: #GeographicDatasets!
+!classDefinition: 'TiledECEFNaturalEarth class' category: 'GeographicDatasets'!
 TiledECEFNaturalEarth class
 	instanceVariableNames: ''!
 
-!classDefinition: #TiledECEFVariableSampledWorld category: #GeographicDatasets!
+!classDefinition: #TiledECEFVariableSampledWorld category: 'GeographicDatasets'!
 TiledECEFSampledWorld subclass: #TiledECEFVariableSampledWorld
 	instanceVariableNames: 'tilesPerFaceSide maxSamplesPerTileSide'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'GeographicDatasets'!
-!classDefinition: 'TiledECEFVariableSampledWorld class' category: #GeographicDatasets!
+!classDefinition: 'TiledECEFVariableSampledWorld class' category: 'GeographicDatasets'!
 TiledECEFVariableSampledWorld class
 	instanceVariableNames: ''!
 
-!classDefinition: #TiledECEFVariableSampledDEM category: #GeographicDatasets!
+!classDefinition: #TiledECEFVariableSampledDEM category: 'GeographicDatasets'!
 TiledECEFVariableSampledWorld subclass: #TiledECEFVariableSampledDEM
 	instanceVariableNames: 'sourceGeoid sourceDEM'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'GeographicDatasets'!
-!classDefinition: 'TiledECEFVariableSampledDEM class' category: #GeographicDatasets!
+!classDefinition: 'TiledECEFVariableSampledDEM class' category: 'GeographicDatasets'!
 TiledECEFVariableSampledDEM class
 	instanceVariableNames: ''!
 
-!classDefinition: #TiledECEFVariableSampledNaturalEarth category: #GeographicDatasets!
+!classDefinition: #TiledECEFVariableSampledNaturalEarth category: 'GeographicDatasets'!
 TiledECEFVariableSampledWorld subclass: #TiledECEFVariableSampledNaturalEarth
 	instanceVariableNames: 'sourceDataset'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'GeographicDatasets'!
-!classDefinition: 'TiledECEFVariableSampledNaturalEarth class' category: #GeographicDatasets!
+!classDefinition: 'TiledECEFVariableSampledNaturalEarth class' category: 'GeographicDatasets'!
 TiledECEFVariableSampledNaturalEarth class
 	instanceVariableNames: ''!
 
-!classDefinition: #TiledLatitudeLongitudeSampledWorld category: #GeographicDatasets!
+!classDefinition: #TiledLatitudeLongitudeSampledWorld category: 'GeographicDatasets'!
 TiledSampledWorld subclass: #TiledLatitudeLongitudeSampledWorld
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'GeographicDatasets'!
-!classDefinition: 'TiledLatitudeLongitudeSampledWorld class' category: #GeographicDatasets!
+!classDefinition: 'TiledLatitudeLongitudeSampledWorld class' category: 'GeographicDatasets'!
 TiledLatitudeLongitudeSampledWorld class
 	instanceVariableNames: ''!
 
-!classDefinition: #EGM96Geoid5 category: #GeographicDatasets!
+!classDefinition: #EGM96Geoid5 category: 'GeographicDatasets'!
 TiledLatitudeLongitudeSampledWorld subclass: #EGM96Geoid5
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'GeographicDatasets'!
-!classDefinition: 'EGM96Geoid5 class' category: #GeographicDatasets!
+!classDefinition: 'EGM96Geoid5 class' category: 'GeographicDatasets'!
 EGM96Geoid5 class
 	instanceVariableNames: ''!
 
-!classDefinition: #NaturalEarth category: #GeographicDatasets!
+!classDefinition: #NaturalEarth category: 'GeographicDatasets'!
 TiledLatitudeLongitudeSampledWorld subclass: #NaturalEarth
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'GeographicDatasets'!
-!classDefinition: 'NaturalEarth class' category: #GeographicDatasets!
+!classDefinition: 'NaturalEarth class' category: 'GeographicDatasets'!
 NaturalEarth class
 	instanceVariableNames: ''!
 
-!classDefinition: #ShuttleRadarTopographyMission category: #GeographicDatasets!
+!classDefinition: #ShuttleRadarTopographyMission category: 'GeographicDatasets'!
 TiledLatitudeLongitudeSampledWorld subclass: #ShuttleRadarTopographyMission
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'GeographicDatasets'!
-!classDefinition: 'ShuttleRadarTopographyMission class' category: #GeographicDatasets!
+!classDefinition: 'ShuttleRadarTopographyMission class' category: 'GeographicDatasets'!
 ShuttleRadarTopographyMission class
 	instanceVariableNames: ''!
 
-!classDefinition: #ShuttleRadarTopographyMission3 category: #GeographicDatasets!
+!classDefinition: #ShuttleRadarTopographyMission3 category: 'GeographicDatasets'!
 ShuttleRadarTopographyMission subclass: #ShuttleRadarTopographyMission3
 	instanceVariableNames: 'cacheSize logFilename'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'GeographicDatasets'!
-!classDefinition: 'ShuttleRadarTopographyMission3 class' category: #GeographicDatasets!
+!classDefinition: 'ShuttleRadarTopographyMission3 class' category: 'GeographicDatasets'!
 ShuttleRadarTopographyMission3 class
 	instanceVariableNames: ''!
 
-!classDefinition: #ShuttleRadarTopographyMission30 category: #GeographicDatasets!
+!classDefinition: #ShuttleRadarTopographyMission30 category: 'GeographicDatasets'!
 ShuttleRadarTopographyMission subclass: #ShuttleRadarTopographyMission30
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'GeographicDatasets'!
-!classDefinition: 'ShuttleRadarTopographyMission30 class' category: #GeographicDatasets!
+!classDefinition: 'ShuttleRadarTopographyMission30 class' category: 'GeographicDatasets'!
 ShuttleRadarTopographyMission30 class
 	instanceVariableNames: ''!
 
-!classDefinition: #TrueMarble category: #GeographicDatasets!
+!classDefinition: #TrueMarble category: 'GeographicDatasets'!
 TiledLatitudeLongitudeSampledWorld subclass: #TrueMarble
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'GeographicDatasets'!
-!classDefinition: 'TrueMarble class' category: #GeographicDatasets!
+!classDefinition: 'TrueMarble class' category: 'GeographicDatasets'!
 TrueMarble class
 	instanceVariableNames: ''!
 
-!classDefinition: #TiledWebmercatorSampledWorld category: #GeographicDatasets!
+!classDefinition: #TiledWebmercatorSampledWorld category: 'GeographicDatasets'!
 TiledSampledWorld subclass: #TiledWebmercatorSampledWorld
 	instanceVariableNames: 'projection zoomLevel'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'GeographicDatasets'!
-!classDefinition: 'TiledWebmercatorSampledWorld class' category: #GeographicDatasets!
+!classDefinition: 'TiledWebmercatorSampledWorld class' category: 'GeographicDatasets'!
 TiledWebmercatorSampledWorld class
 	instanceVariableNames: ''!
 
-!classDefinition: #GoogleSampledWorld category: #GeographicDatasets!
+!classDefinition: #GoogleSampledWorld category: 'GeographicDatasets'!
 TiledWebmercatorSampledWorld subclass: #GoogleSampledWorld
 	instanceVariableNames: 'loPassSigma'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'GeographicDatasets'!
-!classDefinition: 'GoogleSampledWorld class' category: #GeographicDatasets!
+!classDefinition: 'GoogleSampledWorld class' category: 'GeographicDatasets'!
 GoogleSampledWorld class
 	instanceVariableNames: ''!
 
@@ -442,10 +442,9 @@ zoomLevel is an integer greater or equal to zero. Tiles are always 256@256 in ex
 
 See https://wiki.openstreetmap.org/wiki/Zoom_levels!
 
-!GoogleSampledWorld commentStamp: 'jmv 8/13/2018 13:37:38' prior: 0!
+!GoogleSampledWorld commentStamp: '<historical>' prior: 0!
 Google maps tiles.
-
-(GoogleSampledWorld zoomLevel: 0) exampleArgentina displayAutoRangeAt: 0@0 zoom: 1.!
+	GoogleSampledWorld exampleArgentina displayAutoRangeAt: 0@0 zoom: 1!
 
 !EGM96Geoid5Test methodsFor: 'setUp - tearDown' stamp: 'jmv 3/4/2016 10:39'!
 setUp

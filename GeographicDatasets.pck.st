@@ -1,6 +1,6 @@
 'From Cuis 5.0 [latest update: #4607] on 20 May 2021 at 10:13:09 am'!
 'Description '!
-!provides: 'GeographicDatasets' 1 15!
+!provides: 'GeographicDatasets' 1 16!
 !requires: 'ImageProcessing' 1 nil nil!
 !requires: 'Cartography' 1 1 nil!
 !requires: 'WebClient' 1 16 nil!
@@ -591,7 +591,7 @@ test02
 		samples: tile
 		into: [ :ecef :pointBelongsInFace :pointBelongsInExtendedFace |
 			pointBelongsInFace 
-				ifTrue: [ self assert: ecef normalized = (0@0@-1) ]
+				ifTrue: [ self assert: ecef normalized = (0@0@ -1) ]
 				ifFalse: [ self halt ]].
 			
 	"Points around Equator"
@@ -602,7 +602,7 @@ test02
 		samples: tile
 		into: [ :ecef :pointBelongsInFace :pointBelongsInExtendedFace |
 			pointBelongsInFace 
-				ifTrue: [ self assert: ecef normalized = (0@-1@0) ]
+				ifTrue: [ self assert: ecef normalized = (0 @ -1 @ 0) ]
 				ifFalse: [ self halt ]].
 	ne 
 		ecefOfFace: 3
@@ -659,7 +659,7 @@ test03
 		samples: tile
 		into: [ :ecef :pointBelongsInFace :pointBelongsInExtendedFace |
 			pointBelongsInFace 
-				ifTrue: [ self assert: ecef normalized = (0@0@-1) ]
+				ifTrue: [ self assert: ecef normalized = (0 @ 0 @ -1) ]
 				ifFalse: [ self halt ]].
 			
 	"Points around Equator"
@@ -670,7 +670,7 @@ test03
 		samples: tile
 		into: [ :ecef :pointBelongsInFace :pointBelongsInExtendedFace |
 			pointBelongsInFace 
-				ifTrue: [ self assert: ecef normalized = (0@-1@0) ]
+				ifTrue: [ self assert: ecef normalized = (0 @ -1 @ 0) ]
 				ifFalse: [ self halt ]].
 	ne 
 		ecefOfFace: 3
@@ -750,7 +750,7 @@ test05
 	TiledECEFSampledWorldTest new test05
 	"
 	| cornerEcef ne tile faceIndex |
-	cornerEcef _ (1@-1@1) normalized * GPSPosition wgs84SemiMajorAxis.
+	cornerEcef _ (1 @ -1 @ 1) normalized * GPSPosition wgs84SemiMajorAxis.
 	ne _ TiledECEFNaturalEarth tilesPerFaceSide: 3 samplesPerTileSide: 101.
 	tile _ ne newTileSamples.
 	faceIndex _ ne bestFaceFor: cornerEcef.
@@ -1297,7 +1297,7 @@ ecefOfFace: faceNumber position: positionInFace into: aBlock
 
 	| ww ecef |
 	ww := TiledECEFSampledWorld tilesPerFaceSide: 1 samplesPerTileSide: 300 .
-	{ 3000@-2000. 200@150. -2000@ -2500. -100@1000} do: [ :position |
+	{ 3000 @ -2000. 200@150. -2000@ -2500. -100@1000} do: [ :position |
 		1 to: 6 do: [ :face |
 			ecef := ww ecefOfFace: face position: position.
 			ww withFaceAndPositionOf: ecef evaluate: [ :f :p |
@@ -1343,7 +1343,7 @@ ecefOfFace: faceNumber tilePosition: positionOfTile positionInTile: positionInTi
 
 	| ww ecef |
 	ww := TiledECEFSampledWorld tilesPerFaceSide: 1 samplesPerTileSide: 300 .
-	{ 3000@-2000. 200@150. -2000@ -2500. -100@1000} do: [ :position |
+	{ 3000 @ -2000. 200@150. -2000@ -2500. -100@1000} do: [ :position |
 		1 to: 6 do: [ :face |
 			ecef := ww ecefOfFace: face position: position.
 			ww withFaceAndPositionOf: ecef evaluate: [ :f :p |
@@ -3364,7 +3364,7 @@ sampleTile: tile at: zeroBasedPosition
 		ifNotNil: [
 			"We add 0.5 and not 1, because there is an extra -0.5 pixel offset in both directions.
 			Differently from ShuttleRadarTopographyMission3 (that has an 1 pixel overlap between tiles),
-			ShuttleRadarTopographyMission30 has no overlap. This means that latLong 90,-180 means -0.5@-0.5, i.e.
+			ShuttleRadarTopographyMission30 has no overlap. This means that latLong 90,-180 means -0.5 @ -0.5, i.e.
 			the 'topLeft' corner of the topLeft pixel."
 			xx _ zeroBasedPosition x + 0.5.
 			yy _ zeroBasedPosition y + 0.5.

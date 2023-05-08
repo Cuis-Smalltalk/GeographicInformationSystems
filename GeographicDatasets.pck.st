@@ -1,6 +1,6 @@
-'From Cuis 5.0 [latest update: #4607] on 20 May 2021 at 10:13:09 am'!
+'From Cuis 6.0 [latest update: #5795] on 7 May 2023 at 7:06:01 pm'!
 'Description '!
-!provides: 'GeographicDatasets' 1 16!
+!provides: 'GeographicDatasets' 1 17!
 !requires: 'ImageProcessing' 1 nil nil!
 !requires: 'Cartography' 1 1 nil!
 !requires: 'WebClient' 1 16 nil!
@@ -326,7 +326,7 @@ TiledECEFVariableSampledDEM loRes exampleWorld displayAutoRangeAt: 0@0 zoom: 1.!
 Quite like TiledECEFNaturalEarth, but with tiles of non-equal size. Also, tiles are instances of FloatMatrix (i.e. monochrome).!
 
 !TiledLatitudeLongitudeSampledWorld commentStamp: '<historical>' prior: 0!
-Sampling is done in an Equirrectangular projection, in particular Plate Carrée. This uniformly sampled geodetic Latitude and Longitude. See https://en.wikipedia.org/wiki/Equirectangular_projection
+Sampling is done in an Equirrectangular projection, in particular Plate CarrÃ©e. This uniformly sampled geodetic Latitude and Longitude. See https://en.wikipedia.org/wiki/Equirectangular_projection
 This is the same projection used by most global raster datasets (BlueMarble, TrueMarble, DEMs, etc).
 
 Fine sampling of the whole world would result in too high memory usage. Tiles include an integer number of degrees of latitude and longitude. There is a cache that forgets LRU tiles.!
@@ -1557,12 +1557,12 @@ faceLatitudeLongitudeExtent
 
 	- If we answered 45, there would be no missing areas and no overlap.
 		We can say that, for example, for the face that is centered at the Equator and Greenwich meridian
-		(face 3, the one including Africa), the lateral borders are meridians 45° East and 45° West.
-		Face2, including America is laterally bounded by meridians 45° West and 135° West.
+		(face 3, the one including Africa), the lateral borders are meridians 45Â° East and 45Â° West.
+		Face2, including America is laterally bounded by meridians 45Â° West and 135Â° West.
 
 	- We answer a bit more than 45, to allow for a bit of overlap between faces:
-		Face 3 is laterally bounded by meridians 48° East and 48° West
-		Face 2 is laterally bounded by meridians 42° West and 138° West.
+		Face 3 is laterally bounded by meridians 48Â° East and 48Â° West
+		Face 2 is laterally bounded by meridians 42Â° West and 138Â° West.
 		This allows for the rectification of a frame, using just one face, even in the case the frame spans 2 faces
 		
 	Specifying the bound of faces 1 and 6 (containing the poles) seems harder, but that is just for the convention used
@@ -2023,18 +2023,18 @@ writeToDisk: samples face: faceNumber tilePosition: positionOfTile
 	self writeToDisk: samples face: faceNumber tilePosition: positionOfTile in: 'new'
 	"! !
 
-!TiledECEFVariableSampledDEM methodsFor: 'building' stamp: 'jmv 5/31/2016 16:09'!
+!TiledECEFVariableSampledDEM methodsFor: 'building' stamp: 'jmv 5/7/2023 19:00:48'!
 writeToDisk: samples face: faceNumber tilePosition: positionOfTile in: path
 	| w h value |
-	w _ samples width.
-	h _ samples height.
+	w := samples width.
+	h := samples height.
 	path asDirectoryEntry // (self filenameForTileAtFace: faceNumber tilePosition: positionOfTile)
 		forceWriteStreamDo: [ :stream |
 			stream binary.
 			1 to: h do: [ :i |
 				1 to: w do: [ :j |
-					value _ samples i: i j: j.
-					stream nextSignedInt16Put: value asInteger bigEndian: false]]]! !
+					value := samples i: i j: j.
+					stream nextInt16Put: value asInteger bigEndian: false]]]! !
 
 !TiledECEFVariableSampledDEM methodsFor: 'querying' stamp: 'jmv 2/17/2017 10:56:58'!
 ecefOnTerrainFor: ecef
@@ -2059,22 +2059,22 @@ gpsPositionOnTerrainFor: gpsPos
 hasSourceDataset
 	^ sourceGeoid notNil and: [ sourceDEM notNil ]! !
 
-!TiledECEFVariableSampledDEM methodsFor: 'private' stamp: 'jmv 5/31/2016 16:09'!
+!TiledECEFVariableSampledDEM methodsFor: 'private' stamp: 'jmv 5/7/2023 19:00:18'!
 loadFromFile: aFilename in: path
 	| pathName fileEntry fileSize wh tile |
-	pathName _ path, '/', aFilename.
-	fileEntry _ pathName asFileEntry.
+	pathName := path, '/', aFilename.
+	fileEntry := pathName asFileEntry.
 	fileEntry exists ifFalse: [ ^ nil "Allow for null tiles" ].
-	fileSize _ fileEntry fileSize.
-	wh _ (fileSize / 2) sqrt.
+	fileSize := fileEntry fileSize.
+	wh := (fileSize / 2) sqrt.
 	wh isInteger ifFalse: [
 		self error: 'File has invalid size' ].
-	tile _ FloatImage extent: wh@wh.
+	tile := FloatImage extent: wh@wh.
 	fileEntry readStreamDo: [ :stream |
 		stream binary.
 		1 to: wh do: [ :i |
 			1 to: wh do: [ :j |
-				tile i: i j: j put: (stream nextSignedInt16BigEndian: false)]]].
+				tile i: i j: j put: (stream nextInt16BigEndian: false)]]].
 	^ tile! !
 
 !TiledECEFVariableSampledDEM methodsFor: 'private' stamp: 'jmv 4/18/2016 09:59'!
@@ -2799,7 +2799,7 @@ initialize
 	name _ 'Geoid'.
 	self datasetPath: 'payload/datasets/Geoid/egm96-5.pgm'! !
 
-!EGM96Geoid5 methodsFor: 'private' stamp: 'jmv 5/31/2016 16:09'!
+!EGM96Geoid5 methodsFor: 'private' stamp: 'jmv 5/7/2023 18:51:55'!
 loadFromFile: aFilename
 
 	"height is obtained as follows: height = offset + scale pixel, 
@@ -2808,29 +2808,29 @@ loadFromFile: aFilename
 
  	| m value offset scale height aux aux2 idx scale_str offset_str fileSize file fileHeight fileWidth |  
 
-	file _ aFilename asFileEntry.
-	fileWidth _ 4320.
-	fileHeight _ 2161.
-	fileSize _ file fileSize.
+	file := aFilename asFileEntry.
+	fileWidth := 4320.
+	fileHeight := 2161.
+	fileSize := file fileSize.
 	file readStreamDo: [ :stream |
 		
 		14 timesRepeat: [
-			aux _ stream nextLine.
+			aux := stream nextLine.
 			(aux beginsWith: '# Offset')
 				ifTrue: [
-					aux2 _ aux.
-					idx _ aux2 findString: '# Offset'. 
-					offset_str _ aux2 copyFrom: idx + 8 to: aux2 size.
-					offset_str _ offset_str copyReplaceAll:' ' with:''. 
-					offset _ offset_str asNumber ].
+					aux2 := aux.
+					idx := aux2 findString: '# Offset'. 
+					offset_str := aux2 copyFrom: idx + 8 to: aux2 size.
+					offset_str := offset_str copyReplaceAll:' ' with:''. 
+					offset := offset_str asNumber ].
 
 			(aux beginsWith: '# Scale')
 				ifTrue: [
-					aux2 _ aux.
-					idx _ aux2 findString: '# Scale'. 
-					scale_str _ aux2 copyFrom: idx + 7 to: aux2 size.
-					scale_str _ scale_str copyReplaceAll:' ' with:''. 
-					scale _ scale_str asNumber ].
+					aux2 := aux.
+					idx := aux2 findString: '# Scale'. 
+					scale_str := aux2 copyFrom: idx + 7 to: aux2 size.
+					scale_str := scale_str copyReplaceAll:' ' with:''. 
+					scale := scale_str asNumber ].
 			].
 
 		self assert: stream nextLine = '4320 2161'.
@@ -2839,11 +2839,11 @@ loadFromFile: aFilename
 		stream binary.
 	
 
-		m _ FloatImage extent: fileWidth+1@fileHeight.
+		m := FloatImage extent: fileWidth+1@fileHeight.
 		1 to: fileHeight do: [ :i |
 			1 to: fileWidth do: [ :j |
-				value _ stream nextUnsignedInt16BigEndian: true.
-				height _ value * scale + offset.
+				value := stream nextUint16BigEndian: true.
+				height := value * scale + offset.
 				m i: i j: j put: height ]]].
 
 	"Add an extra column at the end, repeating the first one,
@@ -3057,11 +3057,11 @@ globalPixelPositionForLatitude: latitude longitude: longitude
 		y _ y asFloat predecessor ].
 	^x@y! !
 
-!ShuttleRadarTopographyMission methodsFor: 'private' stamp: 'jmv 5/31/2016 16:09'!
+!ShuttleRadarTopographyMission methodsFor: 'private' stamp: 'jmv 5/7/2023 19:00:23'!
 loadFromFile: aFilename
  	| m value file tell prevValue |  
 	
-	file _ aFilename asFileEntry.
+	file := aFilename asFileEntry.
 	"If file doesn't exist, assume it is all water."
 	file exists ifFalse: [ ^ nil "Allow for null tiles" ].
 
@@ -3069,23 +3069,23 @@ loadFromFile: aFilename
 		('Dem file read: ', aFilename, 'Invalid file size. Tile ignored.') print.
 		^ nil "Allow for null tiles" ].
 	
-	m _ FloatImage extent: self class samplesPerTileH @ self class samplesPerTileV.
+	m := FloatImage extent: self class samplesPerTileH @ self class samplesPerTileV.
 
-	tell _ false.
+	tell := false.
 
-	prevValue _ nil.
+	prevValue := nil.
 	file readStreamDo: [ :stream |
 		stream binary.
 		1 to: self class samplesPerTileV do: [ :i |
 			1 to: self class samplesPerTileH do: [ :j |
-				value _ stream nextSignedInt16BigEndian: true.
+				value := stream nextInt16BigEndian: true.
 				"When we find void values inside an SRTM or ViewFinderPanoramas tile,
 				it means that this value is unknown. An acceptable solution is to take some neighbour value."
 				value = self class voidValue ifTrue: [
-					value _ prevValue ifNil: [ 0 ].
-					tell _ true ].
+					value := prevValue ifNil: [ 0 ].
+					tell := true ].
 				m i: i j: j put: value.
-				prevValue _ value.
+				prevValue := value.
 			]
 		].
 	].

@@ -1,7 +1,7 @@
-'From Cuis 5.0 [latest update: #4594] on 10 May 2021 at 4:28:51 pm'!
+'From Cuis7.7 [latest update: #7902] on 3 May 2026 at 9:18:55 pm'!
 'Description '!
-!provides: 'Cartography' 1 18!
-!requires: 'Math 3D' 1 4 nil!
+!provides: 'Cartography' 1 19!
+!requires: 'Math3D' 1 5 nil!
 !requires: 'Graphics-Files-Additional' 1 4 nil!
 SystemOrganization addCategory: 'Cartography'!
 
@@ -202,7 +202,7 @@ shortPrintString
 !GPSPosition class methodsFor: 'instance creation' stamp: 'jmv 9/30/2015 09:01'!
 fromECEF: aPoint3D
 	"
-	Por quÈ todo el mundo habla de c·lculos iterativos? es que el c·lculo directo no es tan bueno por alg˙n motivo???
+	Por qu√© todo el mundo habla de c√°lculos iterativos? es que el c√°lculo directo no es tan bueno por alg√∫n motivo???
 	
 	https://microem.ru/files/2012/08/GPS.G1-X-00006.pdf
 	http://www.nalresearch.com/files/Standard%20Modems/A3LA-XG/A3LA-XG%20SW%20Version%201.0.0/GPS%20Technical%20Documents/GPS.G1-X-00006%20(Datum%20Transformations).pdf
